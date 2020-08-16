@@ -23,7 +23,7 @@
         "--runInBand",
         "-c",
         "test/jest.config.js",
-        "test/functional/2-custom_repositories.int-spec.ts"
+        "test/functional/3-subcollections.int-spec"
       ],
       "cwd": "${workspaceRoot}",
       "internalConsoleOptions": "openOnSessionStart"

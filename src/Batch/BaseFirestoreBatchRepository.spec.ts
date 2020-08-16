@@ -10,7 +10,7 @@ import { getRepository } from '../helpers';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const MockFirebase = require('mock-cloud-firestore');
 
-describe('BaseFirestoreBatchRepository', () => {
+describe.skip('BaseFirestoreBatchRepository', () => {
   let bandBatchRepository: BaseFirestoreBatchRepository<Band> = null;
   let bandRepository: BaseFirestoreRepository<Band> = null;
   let firestore: Firestore;
@@ -167,8 +167,6 @@ describe('BaseFirestoreBatchRepository', () => {
     });
   });
 
-  //TODO: for this to work I'll probably need to do the collectionPath refactor
-  // Copy from BaseFirestoreTransactionRepository.spec
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   describe('must handle subcollections', () => {
     it('should be able to create subcollections and initialize them', async () => {

@@ -1,4 +1,6 @@
 import { OrderByDirection, DocumentReference } from '@google-cloud/firestore';
+import { FirestoreBatch } from './Batch/FirestoreBatch';
+import { FirestoreBatchSingleRepository } from './Batch/FirestoreBatchSingleRepository';
 
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
@@ -77,14 +79,16 @@ export interface IBaseRepository<T extends IEntity> {
   create(item: PartialBy<T, 'id'>): Promise<T>;
   update(item: T): Promise<T>;
   delete(id: string): Promise<void>;
-  createBatch(): ISingleBatchRepository<T>;
 }
 
 export type IRepository<T extends IEntity> = IBaseRepository<T> &
   IQueryBuilder<T> &
   IQueryExecutor<T>;
 
-export type ISubCollection<T extends IEntity> = IRepository<T>;
+// TODO: shouldn't this be in IRepository?
+export type ISubCollection<T extends IEntity> = IRepository<T> & {
+  createBatch: () => FirestoreBatchSingleRepository<T>;
+};
 
 export interface IEntity {
   id: string;

@@ -467,7 +467,7 @@ describe('BaseFirestoreTransactionRepository', () => {
       });
     });
 
-    it('should be able to update collections with subcollections', async () => {
+    it('should be able to update collections with subcolle ctions', async () => {
       await bandRepository.runTransaction(async tran => {
         const pt = await tran.findById('porcupine-tree');
         pt.name = 'Porcupine Tree IS THE BEST';
